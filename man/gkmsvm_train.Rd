@@ -3,7 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Training the SVM model}
 \description{Using the kernel matrix created by 'gkmsvm_kernel', this function trains the SVM classifier. Here we rely on the 'kernlab' package, and merely provide a wrapper function.}
-\usage{gkmsvm_train(kernelfn, posfn, negfn, svmfnprfx,  Type="C-svc", C=1, ...)}
+\usage{gkmsvm_train(kernelfn, posfn, negfn, svmfnprfx,  Type="C-svc", C=1, shrinking=FALSE, ...)}
 \arguments{
   \item{kernelfn}{kernel matrix file name}
   \item{posfn}{positive sequences file name}
@@ -11,6 +11,7 @@
   \item{svmfnprfx}{output SVM model file name prefix}
   \item{Type}{optional: SVM type (default='C-svc'), see 'kernlab' documentation for more details.}
   \item{C}{optional: SVM parameter C (default=1), see 'kernlab' documentation for more details.}
+  \item{shrinking}{optional: shrinking parameter for kernlab (default=FALSE), see 'kernlab' documentation for more details.}
   \item{...}{optional: additional SVM parameters, see 'kernlab' documentation for more details.}
 }
 \details{Trains SVM classifier and generates two files: [svmfnprfx]_svalpha.out for SVM alphas and the other for the corresponding SV sequences ([svmfnprfx]_svseq.fa) }

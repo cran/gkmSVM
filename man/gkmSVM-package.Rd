@@ -12,8 +12,8 @@ Imports the 'gkmSVM' v2.0 functionalities into R (www.beerlab.org/gkmsvm). It al
 \tabular{ll}{
 Package: \tab gkmSVM\cr
 Type: \tab Package\cr
-Version: \tab 0.55\cr
-Date: \tab 2015-06-29\cr
+Version: \tab 0.65\cr
+Date: \tab 2015-12-05\cr
 License: \tab GPL (>= 2)\cr
 }
 
@@ -81,13 +81,19 @@ Tutorial
   gkmsvm_classify(testfn, svmfnprfx, outfn);            #scores test sequences 
 
 
-  In a more advanced example, we set the word length L=18, and the number of non gapped positions K=7, and maximum number of mismatches maxnmm=4:
+  In a more advanced example, we set the word length L=18, and the number of non-gapped positions K=7, and maximum number of mismatches maxnmm=4:
   
   gkmsvm_kernel(posfn, negfn, kernelfn, L=18, K=7, maxnmm=4);     #computes kernel 
   
   gkmsvm_train(kernelfn,posfn, negfn, svmfnprfx);                 #trains SVM
   
   gkmsvm_classify(testfn, svmfnprfx, outfn, L=18, K=7, maxnmm=4); #scores test sequences 
+
+  In another example, we run a 5-fold cross validation to plot the ROC curves: 
+  
+  gkmsvm_kernel(posfn, negfn, kernelfn);     #computes kernel 
+
+  cvres = gkmsvm_trainCV(kernelfn, posfn, negfn, svmfnprfx, outputPDFfn='ROC.pdf', outputCVpredfn='cvpred.out');       #trains SVM, plots ROC and PRC curves, and outputs model predictions.
 
 }
 \author{
@@ -98,7 +104,7 @@ Maintainer: Mahmoud Ghandi <mghandi@gmail.com>
 \references{
 Ghandi M, Lee D, Mohammad-Noori M, Beer MA. 2014. Enhanced Regulatory Sequence Prediction Using Gapped k-mer Features. PLoS Comput Biol 10: e1003711. 
 
-Ghandi M et al., gkmSVM a package for gapped-kmer SVM in R, Bioinformatics (in prep.)
+Ghandi M, Mohammad-Noori M, Ghareghani N, Lee D, Garraway LA, and Beer MA. gkmSVM an R package for gapped-kmer SVM, Bioinformatics (in prep.)
 }
 \keyword{package}
 \keyword{gkmSVM}
@@ -116,13 +122,13 @@ Ghandi M et al., gkmSVM a package for gapped-kmer SVM in R, Bioinformatics (in p
   outfn =   'output.txt'      #output scores for sequences in the test set       
 
 #  gkmsvm_kernel(posfn, negfn, kernelfn);                #computes kernel 
-#  gkmsvm_train(kernelfn,posfn, negfn, svmfnprfx);       #trains SVM
-#  gkmsvm_classify(testfn, svmfnprfx, outfn);            #scores test sequences 
+#  gkmsvm_train(kernelfn, posfn, negfn, svmfnprfx);       #trains SVM
+#            #scores test sequences 
 
 #  using L=18, K=7, maxnmm=4
 
 #  gkmsvm_kernel(posfn, negfn, kernelfn, L=18, K=7, maxnmm=4);     #computes kernel 
-#  gkmsvm_train(kernelfn,posfn, negfn, svmfnprfx);                 #trains SVM
+#  gkmsvm_train(kernelfn, posfn, negfn, svmfnprfx);                 #trains SVM
 #  gkmsvm_classify(testfn, svmfnprfx, outfn, L=18, K=7, maxnmm=4); #scores test sequences 
 
 }
