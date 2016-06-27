@@ -12,8 +12,8 @@ Imports the 'gkmSVM' v2.0 functionalities into R (www.beerlab.org/gkmsvm). It al
 \tabular{ll}{
 Package: \tab gkmSVM\cr
 Type: \tab Package\cr
-Version: \tab 0.65\cr
-Date: \tab 2015-12-05\cr
+Version: \tab 0.70\cr
+Date: \tab 2016-06-25\cr
 License: \tab GPL (>= 2)\cr
 }
 
@@ -50,6 +50,7 @@ Tutorial
   
   testfn= 'test_testset.fa'    #test set (FASTA format)
   
+  Alternatively if the negative set is not available, and positive set is provided as a bed file, genNullSeqs function could be used to generate the negative set and positive set sequences. 
   
   #Output file names:  
   
@@ -104,7 +105,7 @@ Maintainer: Mahmoud Ghandi <mghandi@gmail.com>
 \references{
 Ghandi M, Lee D, Mohammad-Noori M, Beer MA. 2014. Enhanced Regulatory Sequence Prediction Using Gapped k-mer Features. PLoS Comput Biol 10: e1003711. 
 
-Ghandi M, Mohammad-Noori M, Ghareghani N, Lee D, Garraway LA, and Beer MA. gkmSVM an R package for gapped-kmer SVM, Bioinformatics (in prep.)
+Ghandi M, Mohammad-Noori M, Ghareghani N, Lee D, Garraway LA, and Beer MA. gkmSVM an R package for gapped-kmer SVM, Bioinformatics (under review)
 }
 \keyword{package}
 \keyword{gkmSVM}
@@ -123,7 +124,7 @@ Ghandi M, Mohammad-Noori M, Ghareghani N, Lee D, Garraway LA, and Beer MA. gkmSV
 
 #  gkmsvm_kernel(posfn, negfn, kernelfn);                #computes kernel 
 #  gkmsvm_train(kernelfn, posfn, negfn, svmfnprfx);       #trains SVM
-#            #scores test sequences 
+#  gkmsvm_classify(testfn, svmfnprfx, outfn);            #scores test sequences 
 
 #  using L=18, K=7, maxnmm=4
 
