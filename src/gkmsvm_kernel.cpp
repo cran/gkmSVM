@@ -109,3 +109,24 @@ void gkmsvm_kernel(SEXP params){
    
   }
   
+  
+/*
+ *  I don't think this is needed, I guess Rccp takes care of it.
+*/
+// register with R 
+  extern void gkmsvm_classify(SEXP params);
+  #include <R_ext/Rdynload.h>
+  static const
+    R_CallMethodDef callMethods[] = {
+      {"gkmSVM_gkmsvm_kernel", (DL_FUNC) &gkmsvm_kernel, -1},
+      {"gkmSVM_gkmsvm_classify", (DL_FUNC) &gkmsvm_classify, -1},
+      {NULL, NULL, 0}
+    };
+  
+  void R_init_gkmSVM(DllInfo *info)
+  {
+   R_registerRoutines(info,
+                       NULL, callMethods,
+                       NULL, NULL);
+  }
+ /**/

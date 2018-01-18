@@ -263,8 +263,8 @@ genNullSeqs = function(
         
         mtc = matchSeqs(desGC[unmatched], rndGC, desLens[unmatched], BiocGenerics::width(rndBed), desRpt[unmatched], rndRpt,
                         gc_th = GC_match_tol,
-                        len_th = repeat_match_tol,
-                        rpt_th = length_match_tol)
+                        len_th = length_match_tol,
+                        rpt_th = repeat_match_tol)
         jj = which(!is.na(mtc))
         if(length(jj)>0){
           #outbed[unmatched[jj],]=rndbed[mtc[jj],];
@@ -282,7 +282,7 @@ genNullSeqs = function(
     }
 
     outbed = gsub(' ','', outbed)
-    write.table(as.matrix(outbed[,1:3]),quote = FALSE, sep='\t',row.names = FALSE, col.names = FALSE , file = outputBedFN)  
+    utils::write.table(as.matrix(outbed[,1:3]),quote = FALSE, sep='\t',row.names = FALSE, col.names = FALSE , file = outputBedFN)  
     if(requireNamespace("seqinr", quietly = TRUE)){
       outseqnams = paste(outbed[,1], outbed[,2], outbed[,3], 'neg', 1:nrow(outbed), sep='_')
       seqinr::write.fasta(sequences = sapply(as.character(outSeq), strsplit,''), names =outseqnams,file.out =   outputNegFastaFN); 
@@ -291,7 +291,9 @@ genNullSeqs = function(
     }
     return(outputNegFastaFN)
     
-  }
+      }else{
+        cat('\n "GenomicRanges" and "rtracklayer" packages are needed. \n')
+      }
 }
 
 if(FALSE){

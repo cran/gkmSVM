@@ -86,8 +86,8 @@ void CConverter::init(){
 		isACGT[ici] = 0;
 		isInAlphabet[ici] = 0;
 	}
-	isACGT['a'] = 1; 		isACGT['c'] = 1; 		isACGT['g'] = 1; 		isACGT['t'] = 1;
-	isACGT['A'] = 1; 		isACGT['C'] = 1; 		isACGT['G'] = 1; 		isACGT['T'] = 1;
+	isACGT[(int)'a'] = 1; 		isACGT[(int)'c'] = 1; 		isACGT[(int)'g'] = 1; 		isACGT[(int)'t'] = 1;
+	isACGT[(int)'A'] = 1; 		isACGT[(int)'C'] = 1; 		isACGT[(int)'G'] = 1; 		isACGT[(int)'T'] = 1;
 
 	for(ici=0;ici<b;ici++){
 		isInAlphabet[toupper(alphabet[ici])]=1;
@@ -127,7 +127,7 @@ tt	15
 
 dinuclId CConverter::dnidx(char *dn)
 {
-	return cidx[dn[0]]+b*cidx[dn[1]];
+	return cidx[(int)(dn[0])]+b*cidx[(int)(dn[1])];
 }
 
 
@@ -142,7 +142,7 @@ void CConverter::convertBasetoDinucl(baseId x[], dinuclId y[], int N) // x[0..N]
 void CConverter::convertBasetoDinucl(char x[], dinuclId y[], int N) // x[0..N], y[0..N-1]
 {
 	for(int i=0;i<N;i++)
-		y[i] = cidx[x[i]]+b*cidx[x[i+1]];
+		y[i] = cidx[(int)(x[i])]+b*cidx[(int)(x[i+1])];
 }
 
 

@@ -36,7 +36,7 @@ void CKLmer::readKLmer(char *s)
 	for (int i=0;i<L;i++)
 	{
 		seq[i] = toupper(s[i]); 
-		iseq[i] = 1<<::globalConverter.cidx[s[i]];
+		iseq[i] = 1<<::globalConverter.cidx[(int)(s[i])];
 		if (seq[i]=='.') {iseq[i]=15; }
 	}
 }

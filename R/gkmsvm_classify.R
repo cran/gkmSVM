@@ -23,6 +23,18 @@ gkmsvm_classify <- function( seqfile,
                                alphafile= paste(svmfnprfx, 'svalpha.out', sep='_')
                              }    
                              
+  
+          
+          ## test duplicate names in .fa file:
+          if (requireNamespace("seqinr", quietly = TRUE)){
+              snams = names(seqinr::read.fasta(seqfile))
+            if(length(which(duplicated(snams)))>0){
+              print(paste("Error: duplicated sequence IDs in", seqfile))
+              stop("Error: duplicated sequence ID");
+            }
+          }
+          
+          
                              params = list(seqfile=seqfile, 
                                            svseqfile=svseqfile,
                                            alphafile=alphafile,

@@ -219,7 +219,7 @@ int CSequence::readFsa(FILE *f, int SkipAlphabetCheck)  // reads one sequence fr
 					(ucase(sline[i])=='T'))
 					*/
 
-				if ((globalConverter.isInAlphabet[sline[i]])||SkipAlphabetCheck)
+				if ((globalConverter.isInAlphabet[(int)(sline[i])])||SkipAlphabetCheck)
 				{
 					this->seq[this->length] = sline[i]; 
 					length++;
@@ -242,10 +242,10 @@ int CSequence::readFsa(FILE *f, int SkipAlphabetCheck)  // reads one sequence fr
 	for(i=0;i<length-1;i++)
 	{
 //		printf("\n%c %d %d",seq[i], cidx[seq[i]], this->maxLength);
-		this->seqBaseId[i] = cidx[seq[i]];
+		this->seqBaseId[i] = cidx[(int)(seq[i])];
 		this->dinucl[i] = globalConverter.dnidx(seq+i);  // for i==length-1 it is meaningless
 	}
-	this->seqBaseId[length-1] = cidx[seq[length-1]];
+	this->seqBaseId[length-1] = cidx[(int)(seq[length-1])];
 
 	if (TALK)
 	{
@@ -304,10 +304,10 @@ int CSequence::readBasic(FILE *f)  // reads one sequence from already opened fil
 	int *cidx = globalConverter.cidx;
 	for(i=0;i<length-1;i++)
 	{
-		this->seqBaseId[i] = cidx[seq[i]]; 
+		this->seqBaseId[i] = cidx[(int)(seq[i])]; 
 		this->dinucl[i] = globalConverter.dnidx(seq+i);  // for i==length-1 it is meaningless
 	}
-	this->seqBaseId[length-1] = cidx[seq[length-1]];
+	this->seqBaseId[length-1] = cidx[(int)(seq[length-1])];
 
 	if (TALK)
 	{
@@ -335,10 +335,10 @@ int CSequence::readString(char *s)  // reads sequence from a string (coverts cha
 	int *cidx = globalConverter.cidx;
 	for(i=0;i<length-1;i++)
 	{
-		this->seqBaseId[i] = cidx[seq[i]]; 
+		this->seqBaseId[i] = cidx[(int)(seq[i])]; 
 		this->dinucl[i] = globalConverter.dnidx(seq+i);  // for i==length-1 it is meaningless
 	}
-	this->seqBaseId[length-1] = cidx[seq[length-1]];
+	this->seqBaseId[length-1] = cidx[(int)(seq[length-1])];
 
 	return length; 
 }
@@ -396,7 +396,7 @@ CSequence *CSequence::getReverseComplement()
 	baseId *rseqBaseId = reverseComplement->getSeqBaseId();  	
 	for(i=0;i<length;i++)
 	{
-		rseq[i] = globalConverter.bcompl[seq[length-1-i]];
+		rseq[i] = globalConverter.bcompl[(int)(seq[length-1-i])];
 	}
 
 	rseq[length] =0; 
@@ -407,10 +407,10 @@ CSequence *CSequence::getReverseComplement()
 
 	for(i=0;i<length-1;i++)
 	{
-		rseqBaseId[i] = globalConverter.cidx[rseq[i]]; 
+		rseqBaseId[i] = globalConverter.cidx[(int)(rseq[i])]; 
 		rdinucl[i] = globalConverter.dnidx(rseq+i);  // for i==length-1 it is meaningless
 	}
-	rseqBaseId[length-1] = globalConverter.cidx[rseq[length-1]];
+	rseqBaseId[length-1] = globalConverter.cidx[(int)(rseq[length-1])];
 
 	
 	return reverseComplement; 

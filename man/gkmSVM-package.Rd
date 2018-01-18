@@ -6,14 +6,14 @@
 Gapped-Kmer Support Vector Machine
 }
 \description{
-Imports the 'gkmSVM' v2.0 functionalities into R (www.beerlab.org/gkmsvm). It also uses the 'kernlab' library (separate R package by different authors) for various SVM algorithms.   
+Imports the 'gkmSVM' v2.0 functionalities into R <http://www.beerlab.org/gkmsvm/> . It also uses the 'kernlab' library (separate R package by different authors) for various SVM algorithms.   
 }
 \details{
 \tabular{ll}{
 Package: \tab gkmSVM\cr
 Type: \tab Package\cr
-Version: \tab 0.71.0\cr
-Date: \tab 2016-06-25\cr
+Version: \tab 0.79.0\cr
+Date: \tab 2018-01-15\cr
 License: \tab GPL (>= 2)\cr
 }
 
