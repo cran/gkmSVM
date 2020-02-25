@@ -151,10 +151,12 @@ void CConverter::readAlphabetFile(char *FN, int MAX_ALPHABET_SIZE_copy){
 	static char sline[1000+3];
 
 	b=0;
-	fgets(sline, 1000, f);
+	if (fgets(sline, 1000, f)==NULL) {
+	  Printf("Error: unable to open Alphabet file.\n");
+	}
 	while(!feof(f)){
 		alphabet[b++]=sline[0];
-		fgets(sline, 1000, f);
+		if (fgets(sline, 1000, f)==NULL) {}
 	}
     sprintf(globtmpstr,"Alphabet Size = %d\n",b);Printf(globtmpstr);
 	if(b>MAX_ALPHABET_SIZE_copy){

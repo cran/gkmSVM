@@ -322,7 +322,7 @@ void CLTree::addToList(class CLList *list, int n, int Lm1, int single, int *tmpb
 }
 
 
-CLTreeMemorize::CLTreeMemorize(int UseLookupTable, int LookupTableMaxSize, class CLTree *tree)
+CLTreeMemorize::CLTreeMemorize(int UseLookupTable, unsigned LookupTableMaxSize, class CLTree *tree)
 {
 	this->tree = tree; 
 	this->UseLookupTable = UseLookupTable; // = (L<=15); // use a look up table for calcScore to speed up. (I used 15 tentatively)

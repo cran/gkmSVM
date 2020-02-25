@@ -284,14 +284,14 @@ int svmClassifySimple(OptsSVMClassify &opt)
             maxnmm = 2*opt.wildcardMismatchM;
         }
 	}
-	double n0 = wmc.n0; 
+	//	double n0 = wmc.n0; 
 	double *c = wmc.cTr; 
 	
-	n0 = c[maxnmm]/2; 
+	//	n0 = c[maxnmm]/2; 
 
 	if (useTgkm==0)
 	{
-		n0 = 0; 
+	  //		n0 = 0; 
 		//kernel = wmc.kernel; 
 		c = wmc.c; // same as kernel
 	}
@@ -300,19 +300,19 @@ int svmClassifySimple(OptsSVMClassify &opt)
 		//n0 = 0; 
 		//kernel = wmc.kernel; 
 		c = wmc.h; 
-		n0 = c[maxnmm]/2;
+		//		n0 = c[maxnmm]/2;
 
 	}
     if (useTgkm==3)  //wildcard kernel
     {
         c = wmc.calcWildcardKernelWeights(L,  opt.wildcardMismatchM, ::globalConverter.b, opt.wildcardLambda, c);
-    	n0 = c[maxnmm]/2;
+	//    	n0 = c[maxnmm]/2;
 
     }
     if (useTgkm==4)  //mismatch kernel
     {
         c = wmc.calcMismatchKernelWeights(L,  opt.wildcardMismatchM, ::globalConverter.b, c);
-    	n0 = c[maxnmm]/2;
+	//    	n0 = c[maxnmm]/2;
 
     }
 
@@ -457,7 +457,7 @@ int svmClassifySuffixTree(OptsSVMClassify &opt)
     char *tmps = new char[maxseqlen+L+2+1000]; 
 
 	CCalcWmML wmc(L, K, ::globalConverter.b);
-	double *kernel = wmc.kernelTruncated;
+	//	double *kernel = wmc.kernelTruncated;
 	if (maxnmm==-1)
 	{ 
 	  maxnmm=L;
@@ -482,12 +482,12 @@ int svmClassifySuffixTree(OptsSVMClassify &opt)
             maxnmm = 2*opt.wildcardMismatchM;
         }
 	}
-	double n0 = wmc.n0; 
+	//	double n0 = wmc.n0; 
 	double *c = wmc.cTr; 
 	if (!useTgkm)
 	{
-		n0 = 0; 
-		kernel = wmc.kernel; 
+	  //		n0 = 0; 
+	  //		kernel = wmc.kernel; 
 		c = wmc.c; // same as kernel
 	}
 	if (useTgkm==2)
@@ -495,19 +495,19 @@ int svmClassifySuffixTree(OptsSVMClassify &opt)
 		//n0 = 0; 
 		//kernel = wmc.kernel; 
 		c = wmc.h; 
-		n0 = c[maxnmm]/2;
+		//		n0 = c[maxnmm]/2;
 
 	}
     if (useTgkm==3)  //wildcard kernel
     {
         c = wmc.calcWildcardKernelWeights(L,  opt.wildcardMismatchM, 4, opt.wildcardLambda, c);
-    	n0 = c[maxnmm]/2;
+	//    	n0 = c[maxnmm]/2;
 
     }
     if (useTgkm==4)  //mismatch kernel
     {
         c = wmc.calcMismatchKernelWeights(L,  opt.wildcardMismatchM, 4, c);
-    	n0 = c[maxnmm]/2;
+	//    	n0 = c[maxnmm]/2;
 
     }
     

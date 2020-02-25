@@ -665,5 +665,5 @@ int cmmcnt(int v) // return number of mismatches between x and y. (v = x^y)
 	v = (v | (v>>1))& 1431655765; //1431655765=(01010101010101010101010101010101) in base 2 // I used this to reduce it to set bit count problem
 	v = v - ((v >> 1) & 0x55555555);                    // reuse input as temporary
 	v = (v & 0x33333333) + ((v >> 2) & 0x33333333);     // temp
-	return( ((v + (v >> 4) & 0xF0F0F0F) * 0x1010101) >> 24); // count
+	return( (((v + (v >> 4)) & 0xF0F0F0F) * 0x1010101) >> 24); // count
 }

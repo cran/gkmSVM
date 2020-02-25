@@ -190,11 +190,13 @@ int CSequence::readFsa(FILE *f, int SkipAlphabetCheck)  // reads one sequence fr
 		return 0; 
 	}
 
-	fgets(sline, MAX_LINE_WIDTH, f); 
+	if (fgets(sline, MAX_LINE_WIDTH, f)==NULL) {
+	  Printf("Error: unable to open Alphabet file.\n");
+	}
 	if (sline[0]=='>') //first line
 	{
 		sscanf(sline+1, "%s", nextName); 
-		fgets(sline, MAX_LINE_WIDTH, f);
+		if (fgets(sline, MAX_LINE_WIDTH, f)==NULL) {}
 		hasNextName = 1;  
 	}
 
@@ -227,7 +229,7 @@ int CSequence::readFsa(FILE *f, int SkipAlphabetCheck)  // reads one sequence fr
 				i++;
 			}
 		}
-		fgets(sline, MAX_LINE_WIDTH, f); 
+		if (fgets(sline, MAX_LINE_WIDTH, f)==NULL) {}
 	}
 	if (sline[0]=='>') //first line
 	{
@@ -289,7 +291,7 @@ int CSequence::readBasic(FILE *f)  // reads one sequence from already opened fil
 		return 0; 
 	}
 
-	fgets(sline, MAX_LINE_WIDTH, f); 
+	if (fgets(sline, MAX_LINE_WIDTH, f)==NULL) {}
 
 	sscanf(sline,"%s%s%s", this->seqName, this->seqLabel, this->seq);
 	
@@ -377,6 +379,9 @@ void CSequence::mutateOneBase(int pos, baseId nwbid)
 
 CSequence *CSequence::getReverseComplement()
 {
+	static char tName[MAX_LINE_WIDTH]; 
+	static char tLabel[MAX_LINE_WIDTH]; 
+
 	if (this->reverseComplement==NULL)
 	{
 		this->reverseComplement = new CSequence(this->maxLength, this); 
@@ -384,8 +389,10 @@ CSequence *CSequence::getReverseComplement()
 	else
 	{
 		this->reverseComplement->length = length; 
-		sprintf(this->seqName,"%s", seqName);
-		sprintf(this->seqLabel,"%s",seqLabel); 
+		sprintf(tName,"%s", seqName);
+		sprintf(tLabel,"%s",seqLabel); 
+		sprintf(this->seqName,"%s", tName);     // to avoid restrict warning
+		sprintf(this->seqLabel,"%s",tLabel); 
 	}
 	int i;
 

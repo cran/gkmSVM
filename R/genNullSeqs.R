@@ -27,7 +27,12 @@ genNullSeqs = function(
   
   
   if (requireNamespace("GenomicRanges", quietly = TRUE)&
-      requireNamespace("rtracklayer", quietly = TRUE)){
+      requireNamespace("rtracklayer", quietly = TRUE)&
+      requireNamespace("BiocGenerics", quietly = TRUE)&
+      requireNamespace("Biostrings", quietly = TRUE)&
+      requireNamespace("GenomeInfoDb", quietly = TRUE)&
+      requireNamespace("IRanges", quietly = TRUE)&
+      requireNamespace("S4Vectors", quietly = TRUE)){
     
     
     #inputBedFile = '~/Downloads/ctcfpos.bed'

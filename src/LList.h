@@ -61,7 +61,7 @@ public:
 	int *tmpinttw; 
 
 	int UseLookupTable; 
-	int LookupTableMaxSize; 
+	unsigned LookupTableMaxSize; 
 	Mymap lookuptable; 
 
 	

@@ -314,14 +314,14 @@ int gkmKernelSimple(OptsGkmKernel &opt)  //Use XOR precomputed hash table
             maxnmm=L;
         }
 	}
-	double n0 = wmc.n0; 
+	//	double n0 = wmc.n0; 
 	double *c = wmc.cTr; 
 	
-	n0 = c[maxnmm]/2; 
+	//	n0 = c[maxnmm]/2; 
 
 	if (useTgkm==0)
 	{
-		n0 = 0; 
+	  //		n0 = 0; 
 		//kernel = wmc.kernel; 
 		c = wmc.c; // same as kernel
 	}
@@ -330,19 +330,19 @@ int gkmKernelSimple(OptsGkmKernel &opt)  //Use XOR precomputed hash table
 	  //	n0 = 0; 
 	  //	kernel = wmc.kernel; 
 		c = wmc.h; 
-		n0 = c[maxnmm]/2;
+		//		n0 = c[maxnmm]/2;
 
 	}
     if (useTgkm==3)  //wildcard kernel 
     {
         c = wmc.calcWildcardKernelWeights(L,  opt.wildcardMismatchM, globalConverter.b, opt.wildcardLambda, c);
-    	n0 = c[maxnmm]/2;
+	//    	n0 = c[maxnmm]/2;
 
     }
     if (useTgkm==4)  //mismatch kernel 
     {
         c = wmc.calcMismatchKernelWeights(L,  opt.wildcardMismatchM, globalConverter.b, c);
-    	n0 = c[maxnmm]/2;
+	//    	n0 = c[maxnmm]/2;
 
     }
 
@@ -352,8 +352,8 @@ int gkmKernelSimple(OptsGkmKernel &opt)  //Use XOR precomputed hash table
 	}
 	Printf("\n");
 
-	int npos=0; 
-	int nneg=0; 
+	//	int npos=0; 
+	//	int nneg=0; 
 
 	//char *tmps = new char[maxseqlen+3]; 
 	int *mmcnt = new int[L+1];  //mismatch count
@@ -391,7 +391,7 @@ int gkmKernelSimple(OptsGkmKernel &opt)  //Use XOR precomputed hash table
 	}
 	fclose(sfi); 
 
-	npos = nseqs;
+	//npos = nseqs;
 
 	//read negative sequence file
 	sfi = fopen(negSeqsFN, "r"); 
@@ -416,7 +416,7 @@ int gkmKernelSimple(OptsGkmKernel &opt)  //Use XOR precomputed hash table
 	}
 	fclose(sfi); 
 
-	nneg = nseqs - npos;
+	//	nneg = nseqs - npos;
 
 	for(i=0;i<nseqs;i++)
 	{

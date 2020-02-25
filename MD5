@@ -1,7 +1,7 @@
-952b0f461256ee6e891bf5a989fd667e *DESCRIPTION
+dd05bd429e0bfae2dd957657c2c7bfbd *DESCRIPTION
 34708ea19d0d0ef8d380a1ec3615a32f *NAMESPACE
 dec672100048bea257020d6f2983922c *R/RcppExports.R
-03724dc4b1ffe32eae90d3b8bc5ce52a *R/genNullSeqs.R
+bf357392164683109a1a2ace628f7ad3 *R/genNullSeqs.R
 e72df12f978f93524fc15c67e7137cf4 *R/gkmsvm_classify.R
 4f6fe3906da73eb094f3a5a304f03816 *R/gkmsvm_delta.R
 adb4c92c2b4ea4f3d4c95f4e35c631a4 *R/gkmsvm_kernel.R
@@ -10,7 +10,7 @@ a8bfa2f87a6a958cd74dba1376cc4527 *R/gkmsvm_trainCV.R
 55296ec4ac6f741c8007b791ff873232 *man/genNullSeqs.Rd
 404e2ce87fe6c6af48de52cca2bc0869 *man/gkmSVM-package.Rd
 d70466de77b8e49ce4d023eaf9d5252f *man/gkmsvm_classify.Rd
-f5d13f2e8d7b4027cb7c408fb6fa3d98 *man/gkmsvm_delta.Rd
+c7181b9947a4429fb123be435cadae88 *man/gkmsvm_delta.Rd
 39e8fc89c8c0f946fb444c9700e6f6a1 *man/gkmsvm_kernel.Rd
 ae8f99248771988fe0a1c4687c5335b9 *man/gkmsvm_train.Rd
 21cc58fc720f0fc7dd306f9cc2dd0d15 *man/gkmsvm_trainCV.Rd
@@ -22,7 +22,7 @@ ae8f99248771988fe0a1c4687c5335b9 *man/gkmsvm_train.Rd
 0e4bdbec0d655dae58150184b10b2948 *src/CbinMMtree.h
 4cd43d5398d6d8a410653e39315b1552 *src/CiDLPasses.cpp
 ed3a7820eef03b44a94147299fe84740 *src/CiDLPasses.h
-cf171a2c3cf105f30cb028d5d75abed1 *src/Converter.cpp
+72b2ccc36613d6f5a6d23303513c3690 *src/Converter.cpp
 8a8750995acfd1747e70798f9c64d264 *src/Converter.h
 313077d0017bb2aa1ee88e9bf022acb0 *src/CountKLmers.cpp
 7164d219a80ba414b73e08edb3fbb891 *src/CountKLmers.h
@@ -44,10 +44,10 @@ bbf302df0478a9c9a3d859467f7fba6f *src/KLmer.cpp
 701158daee0fabb5ead264b61a80aa42 *src/KLmer.h
 45cb253822ceaa71433854149f5cfbc6 *src/LKTree.cpp
 bd422c5b139e0c801c1d5ecb643187bb *src/LKTree.h
-c720ad3bddd930466bac27c30072df6e *src/LList.cpp
-a3a0ce4e9f9a82ee123365c19b3372f8 *src/LList.h
-fc979d6d35c699300e2c9b9dc96313b8 *src/LTree.cpp
-4f93a79108ba229ef72043d39ee6757c *src/LTree.h
+a0178ed0a5f1633b389fb4be337912ee *src/LList.cpp
+c6c68ed1ec766e5cc5c77fc5da8e31fa *src/LList.h
+875c2de77225090c995180fadf7e9a16 *src/LTree.cpp
+756f14e6b13e8d4e6da07671bfe32221 *src/LTree.h
 e20dc1e68392115c6882af5eee75b8fe *src/LTreeS.cpp
 3d04a31909926191a1cde20b8abb7f65 *src/LTreeS.h
 cc51f6f518e5f54ec56eabc4991dc58f *src/LTreef.cpp
@@ -59,7 +59,7 @@ cedcab590bb61d0cd8e0a6a92a4718ab *src/MLEstimKLmersLog.h
 398269953c6bfa363e07d4d4d60e5c62 *src/RcppExports.cpp
 3356621ba112293627ca2e40aada58c9 *src/SVMtrain.cpp
 2cb43a043af48b36dee281212570a9c4 *src/SVMtrain.h
-6cb67e489f7e775cbf29dba1210da736 *src/Sequence.cpp
+3620c09864664a3c97f8a9cf261966ed *src/Sequence.cpp
 94a3dc36fad7e0209c79dd1c984bed19 *src/Sequence.h
 ec902e23ff7366ece493f5eb8a32ecd4 *src/SequenceData.cpp
 7e305d74af5fb3b117b55dd9efca3b97 *src/SequenceData.h
@@ -73,6 +73,6 @@ cf453f5cd82971745bed7e574620bd24 *src/gkmsvm_kernel.cpp
 c4df99ac1ed42b88a406095c51461689 *src/global.h
 b8038ed6f3368eb646541d1b3bb3db46 *src/globalTypeDefs.h
 d41d8cd98f00b204e9800998ecf8427e *src/globalvar.h
-d6690a69c90d2bd24412691e4d265b25 *src/mainGkmKernel.cpp
-96a23539edd3707b7b951cba8d384cb2 *src/mainSVMclassify.cpp
+8bb00b20c2f4f04620c2ee8307bc6fdd *src/mainGkmKernel.cpp
+ccc8612546e5aceebbded88eb84bd5fd *src/mainSVMclassify.cpp
 cd585d169393cb63a88f22785c77297e *src/mainSVMtrain.cpp

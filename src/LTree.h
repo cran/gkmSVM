@@ -49,13 +49,13 @@ private:
 class CLTreeMemorize
 {	
 public: 
-	CLTreeMemorize(int UseLookupTable, int LookupTableMaxSize, class CLTree *tree);
+	CLTreeMemorize(int UseLookupTable, unsigned LookupTableMaxSize, class CLTree *tree);
 	~CLTreeMemorize(void);
 
 	class CLTree *tree; 
 	double calcScore(int *bid, int L, double *kernel, int maxmm, int *tmpcnt); //calculates the score. tmpcnt is int[L+1] 
 
 	int UseLookupTable; 
-	int LookupTableMaxSize; 
+	unsigned LookupTableMaxSize; 
 	Mymap lookuptable; 
 };
