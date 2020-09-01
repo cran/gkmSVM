@@ -149,7 +149,7 @@ gkmsvm_trainCV = function (kernelfn, posfn, negfn, svmfnprfx=NA, nCV=5, nrepeat=
         
         if(nCV<2){
           print("Error:  nCV should be >= 2!")
-          return;
+          return(NULL);
         }
         if(nrepeat>=nseq){
           nrepeat = nseq-1; print(paste('Warning: nrepeat was reduced to',nrepeat));

@@ -1,8 +1,8 @@
 Package: gkmSVM
 Type: Package
 Title: Gapped-Kmer Support Vector Machine
-Version: 0.80.0
-Date: 2020-02-04
+Version: 0.81.0
+Date: 2020-08-31
 Author: Mahmoud Ghandi
 Maintainer: Mike Beer <mbeer@jhu.edu>
 Description: Imports the 'gkmSVM' v2.0 functionalities into R <http://www.beerlab.org/gkmsvm/>
@@ -19,5 +19,5 @@ LinkingTo: Rcpp
 SystemRequirements: C++11
 NeedsCompilation: yes
 Repository: CRAN
-Packaged: 2020-02-24 19:53:58 UTC; mbeer3
-Date/Publication: 2020-02-25 01:20:11 UTC
+Packaged: 2020-09-01 03:33:42 UTC; mbeer3
+Date/Publication: 2020-09-01 08:30:02 UTC
