@@ -2,6 +2,8 @@
 #include <string.h>
 using namespace Rcpp;
 
+#define MAX_LINE_WIDTH 10000	/* maximum line width */
+
 // This is a simple example of exporting a C++ function to R. You can
 // source this function into an R session using the Rcpp::sourceCpp 
 // function (or via the Source button on the editor toolbar). Learn
@@ -42,54 +44,54 @@ void gkmsvm_classify(SEXP params){
       argv[i]=new char[5000]; 
     }
     
-    sprintf(argv[argc++], "gkmsvm_classify"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "gkmsvm_classify"); 
     
-    sprintf(argv[argc++], "-l"); 
-    sprintf(argv[argc++], "%d", L); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-l"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%d", L); 
     
-    sprintf(argv[argc++], "-k"); 
-    sprintf(argv[argc++], "%d", K); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-k"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%d", K); 
     
-    sprintf(argv[argc++], "-d"); 
-    sprintf(argv[argc++], "%d", maxnmm); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-d"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%d", maxnmm); 
     
-    sprintf(argv[argc++], "-m"); 
-    sprintf(argv[argc++], "%d", maxseqlen); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-m"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%d", maxseqlen); 
     
-    sprintf(argv[argc++], "-n"); 
-    sprintf(argv[argc++], "%d", maxnumseq); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-n"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%d", maxnumseq); 
     
-    sprintf(argv[argc++], "-t"); 
-    sprintf(argv[argc++], "%d", useTgkm); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-t"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%d", useTgkm); 
     
-    sprintf(argv[argc++], "-a"); 
-    sprintf(argv[argc++], "%d", alg); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-a"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%d", alg); 
     
-    sprintf(argv[argc++], "-b"); 
-    sprintf(argv[argc++], "%d", batchSize); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-b"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%d", batchSize); 
 
-    sprintf(argv[argc++], "-M"); 
-    sprintf(argv[argc++], "%d", wildcardMismatchM); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-M"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%d", wildcardMismatchM); 
     
-    sprintf(argv[argc++], "-L"); 
-    sprintf(argv[argc++], "%lf", wildcardLambda); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "-L"); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%lf", wildcardLambda); 
     
     if(strcmp(alphabetFN.c_str(), "NULL")!=0){
-      sprintf(argv[argc++], "-A"); 
-      sprintf(argv[argc++], "%s", alphabetFN.c_str()); 
+      snprintf(argv[argc++],MAX_LINE_WIDTH, "-A"); 
+      snprintf(argv[argc++],MAX_LINE_WIDTH, "%s", alphabetFN.c_str()); 
     }
 
     if(addRC==false){
-      sprintf(argv[argc++], "-R"); 
+      snprintf(argv[argc++],MAX_LINE_WIDTH, "-R"); 
     }
     if(usePseudocnt==true){
-      sprintf(argv[argc++], "-p"); 
+      snprintf(argv[argc++],MAX_LINE_WIDTH, "-p"); 
     }
 
-    sprintf(argv[argc++], "%s", seqfile.c_str()); 
-    sprintf(argv[argc++], "%s", svseqfile.c_str()); 
-    sprintf(argv[argc++], "%s", alphafile.c_str()); 
-    sprintf(argv[argc++], "%s", outfile.c_str()); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%s", seqfile.c_str()); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%s", svseqfile.c_str()); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%s", alphafile.c_str()); 
+    snprintf(argv[argc++],MAX_LINE_WIDTH, "%s", outfile.c_str()); 
 
     mainSVMclassify( argc, argv); 
    

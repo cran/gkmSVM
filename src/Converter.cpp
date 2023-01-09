@@ -158,7 +158,7 @@ void CConverter::readAlphabetFile(char *FN, int MAX_ALPHABET_SIZE_copy){
 		alphabet[b++]=sline[0];
 		if (fgets(sline, 1000, f)==NULL) {}
 	}
-    sprintf(globtmpstr,"Alphabet Size = %d\n",b);Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH,"Alphabet Size = %d\n",b);Printf(globtmpstr);
 	if(b>MAX_ALPHABET_SIZE_copy){
 		Printf("ERROR: alphabet size greater than #MAX_ALPHABET_SIZE. Redefine #MAX_ALPHABET_SIZE in global.h\n \n");
 		return;//exit(-1);

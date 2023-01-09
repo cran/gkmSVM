@@ -71,7 +71,7 @@ int gkmKernelSuffixTree(OptsGkmKernel &opt);
 void print_usage_and_exit_gkmKernel(char *prog)
 {
     Printf("\n");
-    sprintf(globtmpstr, " Usage: %s [options] <pos_seqfile> <neg_seqfile> <outfile>\n",prog );Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH, " Usage: %s [options] <pos_seqfile> <neg_seqfile> <outfile>\n",prog );Printf(globtmpstr);
     Printf("\n");
 	Printf("  generates a lower triangle of kernel matrix (i.e. pairwise similarities)\n");
 	Printf("  between the sequences.\n");
@@ -82,24 +82,24 @@ void print_usage_and_exit_gkmKernel(char *prog)
 	Printf("  outfile: output file name\n");
     Printf(" \n");
     Printf(" Options:\n");
-    sprintf(globtmpstr,"  -l L           set word length, default= %d\n", DEF_L); Printf(globtmpstr);
-	sprintf(globtmpstr,"  -k K           set number of informative columns, default= %d \n",DEF_K); Printf(globtmpstr);
-	sprintf(globtmpstr,"  -d maxMismatch set maximum number of mismatches to consider, default= %d \n", DEF_D); Printf(globtmpstr);
-    sprintf(globtmpstr,"%s","  -m maxSeqLen   set maximum sequence length in the sequence files,\n"); Printf(globtmpstr);
-	sprintf(globtmpstr,"                 default= %d \n", DEF_MAXSEQLEN); Printf(globtmpstr);
-	sprintf(globtmpstr,"%s", "  -n maxNumSeq   set maximum number of sequences in the sequence files,\n"); Printf(globtmpstr);
-	sprintf(globtmpstr, "                 default= %d\n", DEF_MAXNUMSEQ); Printf(globtmpstr);
-	sprintf(globtmpstr,"%s", "  -t filterType  set filter type: 0(use full filter), 1(use truncated filter:\n" ); Printf(globtmpstr);
-	sprintf(globtmpstr,"%s", "                 this gaurantees non-negative counts for all L-mers), 2(use h[m],\n"); Printf(globtmpstr);
-	sprintf(globtmpstr, "                 gkm count vector), 3(wildcard), 4(mismatch), default=%d\n",DEF_TGKM ); Printf(globtmpstr);
-	sprintf(globtmpstr,"%s", "  -a algorithm   set algorithm type: 0(auto), 1(XOR Hashtable), 2(tree),\n"); Printf(globtmpstr);
-	sprintf(globtmpstr,"%s", "                 default=0\n"); Printf(globtmpstr);
-	sprintf(globtmpstr,"%s", "  -R             if set, reverse complement sequences will NOT be considered\n"); Printf(globtmpstr);
-	sprintf(globtmpstr,"%s", "  -p             if set, a constant to will be added to the count estimates\n"); Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH,"  -l L           set word length, default= %d\n", DEF_L); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"  -k K           set number of informative columns, default= %d \n",DEF_K); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"  -d maxMismatch set maximum number of mismatches to consider, default= %d \n", DEF_D); Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH,"%s","  -m maxSeqLen   set maximum sequence length in the sequence files,\n"); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"                 default= %d \n", DEF_MAXSEQLEN); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "  -n maxNumSeq   set maximum number of sequences in the sequence files,\n"); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH, "                 default= %d\n", DEF_MAXNUMSEQ); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "  -t filterType  set filter type: 0(use full filter), 1(use truncated filter:\n" ); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "                 this gaurantees non-negative counts for all L-mers), 2(use h[m],\n"); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH, "                 gkm count vector), 3(wildcard), 4(mismatch), default=%d\n",DEF_TGKM ); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "  -a algorithm   set algorithm type: 0(auto), 1(XOR Hashtable), 2(tree),\n"); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "                 default=0\n"); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "  -R             if set, reverse complement sequences will NOT be considered\n"); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "  -p             if set, a constant to will be added to the count estimates\n"); Printf(globtmpstr);
 	//cout << "  -b             if set, the output matrix will be stored in a binary format" << endl;
-	sprintf(globtmpstr,"%s", "  -M             max mismatch for Mismatch kernel or wildcard kernel, default=2\n"); Printf(globtmpstr);
-	sprintf(globtmpstr,"%s", "  -L             lambda for wildcard kernel, defaul=1.0\n"); Printf(globtmpstr);
-    sprintf(globtmpstr,"%s", "  -A             alphabets file name, if not specified, it is assumed the inputs are DNA sequences \n"); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "  -M             max mismatch for Mismatch kernel or wildcard kernel, default=2\n"); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "  -L             lambda for wildcard kernel, defaul=1.0\n"); Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH,"%s", "  -A             alphabets file name, if not specified, it is assumed the inputs are DNA sequences \n"); Printf(globtmpstr);
     
     Printf(" \n");
 
@@ -346,9 +346,9 @@ int gkmKernelSimple(OptsGkmKernel &opt)  //Use XOR precomputed hash table
 
     }
 
-	sprintf(globtmpstr,"\n maximumMismatch = %d\n", maxnmm);Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"\n maximumMismatch = %d\n", maxnmm);Printf(globtmpstr);
 	for(int ii=0;ii<=maxnmm;ii++) {
-		sprintf(globtmpstr,"\n c[%d] = %e",ii,c[ii] ); Printf(globtmpstr);
+		snprintf(globtmpstr,MAX_LINE_WIDTH,"\n c[%d] = %e",ii,c[ii] ); Printf(globtmpstr);
 	}
 	Printf("\n");
 
@@ -563,9 +563,9 @@ int gkmKernelSuffixTree(OptsGkmKernel &opt)  //maingKernel
 
     }
 
-	sprintf(globtmpstr,"\n maximumMismatch = %d\n", maxnmm);Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"\n maximumMismatch = %d\n", maxnmm);Printf(globtmpstr);
 	for(int ii=0;ii<=maxnmm;ii++) {
-		sprintf(globtmpstr,"\n c[%d] = %e",ii,c[ii] ); 	Printf(globtmpstr);
+		snprintf(globtmpstr,MAX_LINE_WIDTH,"\n c[%d] = %e",ii,c[ii] ); 	Printf(globtmpstr);
 	}
 	Printf("\n");
 
@@ -621,7 +621,7 @@ int gkmKernelSuffixTree(OptsGkmKernel &opt)  //maingKernel
 		if(sgi->getLength()>0)
 		{
 			seqname2[nseqs] = new char[100]; 
-			sprintf(seqname2[nseqs],"%s", sgi->getName());
+			snprintf(seqname2[nseqs],100,"%s", sgi->getName());
 			seqname[nseqs]=seqname2[nseqs]; 
 
 			seqsB[nseqs] = new int [sgi->getLength()]; 
@@ -655,7 +655,7 @@ int gkmKernelSuffixTree(OptsGkmKernel &opt)  //maingKernel
 		if(sgi->getLength()>0)
 		{
 			seqname2[nseqs] = new char[100]; 
-			sprintf(seqname2[nseqs],"%s", sgi->getName());
+			snprintf(seqname2[nseqs],100,"%s", sgi->getName());
 			seqname[nseqs]=seqname2[nseqs]; 
 
 			seqsB[nseqs] = new int [sgi->getLength()]; 
@@ -703,7 +703,7 @@ int gkmKernelSuffixTree(OptsGkmKernel &opt)  //maingKernel
     }
     
 	int uniqueLmerCnt = seqsTS->leavesCount(0,L, globalConverter.b, nodesAtDepthCnt);
-    sprintf(globtmpstr,"\n npos %d \n nneg %d \n  ntotal %d \n nunique %d\n",npos,nneg,ntotal,uniqueLmerCnt);Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH,"\n npos %d \n nneg %d \n  ntotal %d \n nunique %d\n",npos,nneg,ntotal,uniqueLmerCnt);Printf(globtmpstr);
 	int minL2 = L; if (minL2<2) minL2 = 2; 
 	for(int i=0;i<=minL2;i++)
 	{
@@ -736,7 +736,7 @@ int gkmKernelSuffixTree(OptsGkmKernel &opt)  //maingKernel
         */
         // else if IDL bound then
         for(int i=0;i<L; i++){
-       //     sprintf(globtmpstr,"d%d , %d\n", i, nodesAtDepthCnt[i]);Printf(globtmpstr);
+       //     snprintf(globtmpstr,MAX_LINE_WIDTH,"d%d , %d\n", i, nodesAtDepthCnt[i]);Printf(globtmpstr);
         }
         
         CiDLPasses iDL;
@@ -758,7 +758,7 @@ int gkmKernelSuffixTree(OptsGkmKernel &opt)  //maingKernel
         int *tmpArray1 = new int[L];
         int *tmpArray2 = new int[L];
         for(int j=0;j<iDL.M;j++){
-            sprintf(globtmpstr,"pass %d out of %d.\n",j+1,iDL.M);Printf(globtmpstr);
+            snprintf(globtmpstr,MAX_LINE_WIDTH,"pass %d out of %d.\n",j+1,iDL.M);Printf(globtmpstr);
             CLTreeS *seqsTSj= new CLTreeS();
             seqsTS->cloneReorder(seqsTSj, iDL.passOrder[j], L,L,globalConverter.b, tmpArray1, tmpArray2);
             //seqsTS->DFSTiDL(gDFSlistT[0],1, gDFSMMlist[0], iDL.passTrees+j, 0, globalConverter.b);
@@ -794,7 +794,7 @@ int gkmKernelSuffixTree(OptsGkmKernel &opt)  //maingKernel
 
         seqsTS->addToGTree(seqsGTree2, L,tmpArray1, MAX_ALPHABET_SIZE, L);
         delete []tmpArray1;
-        sprintf(globtmpstr," gGTreeLeavesCnt = %d \n",gGTreeLeavesCnt);Printf(globtmpstr);
+        snprintf(globtmpstr,MAX_LINE_WIDTH," gGTreeLeavesCnt = %d \n",gGTreeLeavesCnt);Printf(globtmpstr);
         
         for(int i=0;i<gGTreeLeavesCnt;i++){
             gGTreeLeaves2[i].process();

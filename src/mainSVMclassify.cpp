@@ -74,7 +74,7 @@ int svmClassifySimple(OptsSVMClassify &opt);
 void print_usage_and_exit(char *prog)
 {
     Printf("\n");
-    sprintf(globtmpstr, " Usage: %s [options] <test_seqfile> <sv_seqfile> <sv_alphafile> <outfile>\n",prog );Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH, " Usage: %s [options] <test_seqfile> <sv_seqfile> <sv_alphafile> <outfile>\n",prog );Printf(globtmpstr);
     Printf("\n");
 	Printf("  given support vectors SVs and corresponding coefficients alphas and a set of \n");
 	Printf("  sequences, calculates the SVM scores for the sequences.\n");
@@ -86,20 +86,20 @@ void print_usage_and_exit(char *prog)
 	Printf("  outfile: output file name\n");
     Printf("\n");
     Printf(" Options:\n");
-	sprintf(globtmpstr,"  -l L           set word length, default=%d\n",DEF_L);
-	sprintf(globtmpstr,"  -k K           set number of informative columns, default=%d\n", DEF_K);
-    sprintf(globtmpstr, "  -d maxMismatch set maximum number of mismatches to consider, default=%d\n",DEF_D);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"  -l L           set word length, default=%d\n",DEF_L);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"  -k K           set number of informative columns, default=%d\n", DEF_K);
+    snprintf(globtmpstr,MAX_LINE_WIDTH, "  -d maxMismatch set maximum number of mismatches to consider, default=%d\n",DEF_D);
 	Printf("  -m maxSeqLen   set maximum sequence length in the sequence files,\n");
-    sprintf(globtmpstr,"                 default=%d\n",DEF_MAXSEQLEN);
+    snprintf(globtmpstr,MAX_LINE_WIDTH,"                 default=%d\n",DEF_MAXSEQLEN);
 	Printf("  -n maxNumSeq   set maximum number of sequences in the sequence files,\n");
-	sprintf(globtmpstr, "                 default=%d\n",DEF_MAXNUMSEQ);
+	snprintf(globtmpstr,MAX_LINE_WIDTH, "                 default=%d\n",DEF_MAXNUMSEQ);
 	Printf("  -t filterType  set filter type: 0(use full filter), 1(use truncated filter:\n");
 	Printf("                 this gaurantees non-negative counts for all L-mers), 2(use h[m],\n");
-	sprintf(globtmpstr, "                 gkm count vector), 3(wildcard), 4(mismatch), default=%d\n",DEF_TGKM);
+	snprintf(globtmpstr,MAX_LINE_WIDTH, "                 gkm count vector), 3(wildcard), 4(mismatch), default=%d\n",DEF_TGKM);
 	Printf("  -a algorithm   set algorithm type: 0(auto), 1(XOR Hashtable), 2(tree),\n");
 	Printf("                 default=0\n");
 	Printf("  -b             set number of sequences to compute scores for in batch, \n");
-	sprintf(globtmpstr, "                 default=%d\n", DEF_BATCHSIZE);
+	snprintf(globtmpstr,MAX_LINE_WIDTH, "                 default=%d\n", DEF_BATCHSIZE);
 	Printf("  -R             if set, reverse complement sequences will NOT be considered\n");
 	Printf("  -p             if set, a constant to count estimates will be added\n");
 	Printf("  -M             max mismatch for Mismatch kernel or wildcard kernel, default=2\n");
@@ -316,10 +316,10 @@ int svmClassifySimple(OptsSVMClassify &opt)
 
     }
 
-    sprintf(globtmpstr,"\n maximumMismatch = %d\n", maxnmm);Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH,"\n maximumMismatch = %d\n", maxnmm);Printf(globtmpstr);
 
 	for(int ii=0;ii<=maxnmm;ii++) {
-		sprintf(globtmpstr,"\n c[%d] = %e",ii,c[ii] );Printf(globtmpstr);
+		snprintf(globtmpstr,MAX_LINE_WIDTH,"\n c[%d] = %e",ii,c[ii] );Printf(globtmpstr);
 	}
 	Printf("\n");
 
@@ -331,7 +331,7 @@ int svmClassifySimple(OptsSVMClassify &opt)
 
 	CSequenceNames *svsn= new CSequenceNames(); 
 	svsn->readSeqNamesandWeights(SVSeqIDsFN); 
-    sprintf(globtmpstr,"\n  %d SV ids read. \n",svsn->Nseqs);Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH,"\n  %d SV ids read. \n",svsn->Nseqs);Printf(globtmpstr);
 
 
 	svsn->openSeqFile(SVSeqsFN, maxseqlen);
@@ -343,7 +343,7 @@ int svmClassifySimple(OptsSVMClassify &opt)
 		sgi = svsn->nextSeq(); 
 		if(sgi==NULL)
 		{
-            sprintf(globtmpstr,"\n the sequences for only %d out of %d sequence names in SVs file (%s) were found. \n", i,svsn->Nseqs, SVSeqIDsFN);Printf(globtmpstr);
+            snprintf(globtmpstr,MAX_LINE_WIDTH,"\n the sequences for only %d out of %d sequence names in SVs file (%s) were found. \n", i,svsn->Nseqs, SVSeqIDsFN);Printf(globtmpstr);
 
 			break; 
 		}
@@ -367,7 +367,7 @@ int svmClassifySimple(OptsSVMClassify &opt)
 		}
 	}
 
-	sprintf(globtmpstr,"  %d SV seqs read \n",nsvseqs);Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"  %d SV seqs read \n",nsvseqs);Printf(globtmpstr);
 
 	FILE *sfi = fopen(SeqsFN, "r"); 
 	if (sfi == NULL)
@@ -397,7 +397,7 @@ int svmClassifySimple(OptsSVMClassify &opt)
 			delete psetT; 
 
 			seqname[nseqs] = new char [strlength(sgi->getName())+1]; //XXX: should be freed...
-			sprintf(seqname[nseqs],"%s", sgi->getName());
+			snprintf(seqname[nseqs],MAX_LINE_WIDTH,"%s", sgi->getName());
 
 			//NOTE: no alpha for test sequence. 
 			alphaovernorm[nseqs] = (1.0)/sqrt(seqsL[nseqs]->calcInnerProd(seqsL[nseqs], c, mmcnt));
@@ -511,9 +511,9 @@ int svmClassifySuffixTree(OptsSVMClassify &opt)
 
     }
     
-	sprintf(globtmpstr,"\n maximumMismatch = %d\n", maxnmm);Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"\n maximumMismatch = %d\n", maxnmm);Printf(globtmpstr);
 	for(int ii=0;ii<=maxnmm;ii++) {
-		sprintf(globtmpstr,"\n c[%d] = %e",ii,c[ii] ); 	Printf(globtmpstr);
+		snprintf(globtmpstr,MAX_LINE_WIDTH,"\n c[%d] = %e",ii,c[ii] ); 	Printf(globtmpstr);
 	}
 	Printf("\n");
 	
@@ -527,7 +527,7 @@ int svmClassifySuffixTree(OptsSVMClassify &opt)
 
 	CSequenceNames *svsn= new CSequenceNames(); 
 	svsn->readSeqNamesandWeights(SVSeqIDsFN); 
-	sprintf(globtmpstr,"\n  %d SV ids read. \n",svsn->Nseqs);Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"\n  %d SV ids read. \n",svsn->Nseqs);Printf(globtmpstr);
 
 	svsn->openSeqFile(SVSeqsFN, maxseqlen);
 
@@ -540,7 +540,7 @@ int svmClassifySuffixTree(OptsSVMClassify &opt)
 		sgi = svsn->nextSeq(); 
 		if(sgi==NULL)
 		{
-            sprintf(globtmpstr,"\n the sequences for only %d out of %d sequence names in SVs file (%s) were found. \n", i,svsn->Nseqs, SVSeqIDsFN);Printf(globtmpstr);
+            snprintf(globtmpstr,MAX_LINE_WIDTH,"\n the sequences for only %d out of %d sequence names in SVs file (%s) were found. \n", i,svsn->Nseqs, SVSeqIDsFN);Printf(globtmpstr);
 
 			break; 
 		}
@@ -561,7 +561,7 @@ int svmClassifySuffixTree(OptsSVMClassify &opt)
 		}
 	}
 	
-	sprintf(globtmpstr,"  %d SV seqs read \n",nsvseqs); Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"  %d SV seqs read \n",nsvseqs); Printf(globtmpstr);
 
 	delete svsn; 
 
@@ -628,7 +628,7 @@ int svmClassifySuffixTree(OptsSVMClassify &opt)
 
 			norm[nseqs]=calcnorm(sgi, addRC, &psetL, c, mmcnt,L, maxnmm);
 			seqname[nseqs] = new char [strlength(sgi->getName())+1]; //XXX: should be freed...
-			sprintf(seqname[nseqs],"%s", sgi->getName());
+			snprintf(seqname[nseqs],MAX_LINE_WIDTH,"%s", sgi->getName());
 			//seqname[nseqs] = sgi->getNameLink(); //seqsn->seqNames[ii]; 			
 
 			ntotal = ntotal + LmersCnt[nseqs]; 

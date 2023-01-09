@@ -115,7 +115,7 @@ void CMLEstimKLmers::calcMean()
 	this->mu_x = m/(1<<(2*(L-K))); 
 	this->s2x =0.5*s2y/(1<<(2*(L-K)));  // just a rough estimate 
 	
-    sprintf(globtmpstr,"\n mu_y= %lf\n s2y= %lf\nmu_x= %lf\n", mu_y,s2y,mu_x);Printf(globtmpstr);
+	snprintf(globtmpstr,MAX_LINE_WIDTH,"\n mu_y= %lf\n s2y= %lf\nmu_x= %lf\n", mu_y,s2y,mu_x);Printf(globtmpstr);
 }
 
 int CMLEstimKLmers::convert2int(int *bid, int L)

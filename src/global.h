@@ -28,6 +28,7 @@
 #define PI 3.141593
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "Converter.h"
 #include <iostream>

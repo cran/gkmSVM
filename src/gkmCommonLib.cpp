@@ -191,7 +191,7 @@ int convertint2intRC(int x, int L)
 
 char globtmpstr[10000]; // global temp string;
 void Printf(const char *str){ // this to replace printf
-    sprintf(globtmpstr, "%s", str);
+    snprintf(globtmpstr,MAX_LINE_WIDTH, "%s", str);
     Printf(globtmpstr);
 }
 

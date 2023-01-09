@@ -43,9 +43,9 @@ CSequence::CSequence(int maxLength,  CSequence *sCopyFrom )
 	reverseComplement = NULL; 
 
 //	seqName = new char(maxLength); 
-	sprintf(seqName,"seq_%d",serialnumber++);	 
-	sprintf(seq,"%s","");
-	sprintf(seqLabel,"%s","");
+	snprintf(seqName, MAX_LINE_WIDTH, "seq_%d", serialnumber++);	 
+	snprintf(seq, maxLength, "%s", "");
+	snprintf(seqLabel, MAX_LINE_WIDTH, "%s", "");
 	//bendingData = NULL; 
 	//this->occupancyData = NULL;
 	weight = 0; 
@@ -56,8 +56,8 @@ CSequence::CSequence(int maxLength,  CSequence *sCopyFrom )
 		// does not copy reverseCompl, if needed later, will recalculate that
 		CSequence *s = sCopyFrom;
 		length = s->getLength(); 
-		sprintf(seqName,"%s", s->getName());
-		sprintf(seqLabel,"%s", s->getLabel());
+		snprintf(seqName, MAX_LINE_WIDTH, "%s",  s->getName());
+		snprintf(seqLabel, MAX_LINE_WIDTH, "%s",  s->getLabel());
 		int i; 
 		char *sseq = s->getSeq(); 
 		char *ssubseq = s->getSubseq(); 
@@ -200,7 +200,7 @@ int CSequence::readFsa(FILE *f, int SkipAlphabetCheck)  // reads one sequence fr
 		hasNextName = 1;  
 	}
 
-	sprintf(seqName,"%s",(hasNextName?nextName:"NA")); 
+	snprintf(seqName, MAX_LINE_WIDTH, "%s", (hasNextName?nextName:"NA")); 
 	hasNextName = 0; 
 	
 	while(true)
@@ -359,7 +359,7 @@ void CSequence::mutateOneBase(int pos, baseId nwbid)
 {
 	if (pos>=length)
 	{
-		sprintf(globtmpstr,"\n error : cannot mutate pos %d while length is %d",pos, length); Printf(globtmpstr);
+	        snprintf(globtmpstr,MAX_LINE_WIDTH,"\n error : cannot mutate pos %d while length is %d",pos, length); Printf(globtmpstr);
 		return; 
 	}
 
@@ -389,10 +389,10 @@ CSequence *CSequence::getReverseComplement()
 	else
 	{
 		this->reverseComplement->length = length; 
-		sprintf(tName,"%s", seqName);
-		sprintf(tLabel,"%s",seqLabel); 
-		sprintf(this->seqName,"%s", tName);     // to avoid restrict warning
-		sprintf(this->seqLabel,"%s",tLabel); 
+		snprintf(tName, MAX_LINE_WIDTH, "%s",  seqName);
+		snprintf(tLabel, MAX_LINE_WIDTH, "%s", seqLabel); 
+		snprintf(this->seqName, MAX_LINE_WIDTH, "%s",  tName);     // to avoid restrict warning
+		snprintf(this->seqLabel, MAX_LINE_WIDTH, "%s", tLabel); 
 	}
 	int i;
 

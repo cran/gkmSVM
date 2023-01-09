@@ -82,7 +82,7 @@ int mainSVMtrain(int argc, char * argv[]) //mainSVMtrain
 			}
 			else
 			{
-				sprintf(globtmpstr,"\n parameter not recognized: %s \n", argv[i]);Printf(globtmpstr);
+			        snprintf(globtmpstr,MAX_LINE_WIDTH,"\n parameter not recognized: %s \n", argv[i]);Printf(globtmpstr);
 				perr = 1; 
 			}
 		}
@@ -106,7 +106,7 @@ int mainSVMtrain(int argc, char * argv[]) //mainSVMtrain
 			}
 			else
 			{
-				sprintf(globtmpstr,"\n parameter not recognized: %s \n", argv[i]);Printf(globtmpstr);
+				snprintf(globtmpstr,MAX_LINE_WIDTH,"\n parameter not recognized: %s \n", argv[i]);Printf(globtmpstr);
 				perr = 1; 
 			}
 			nfp++; 
@@ -134,7 +134,7 @@ int mainSVMtrain(int argc, char * argv[]) //mainSVMtrain
 		Printf("              the corresponding sequences ({PREFIX}_svseq.fa).\n");
 		Printf("\n");
 		Printf(" Options:\n");
-		sprintf(globtmpstr,"  niter20: number of iterations divided by 20, default=%d\n",niter20);Printf(globtmpstr);
+		snprintf(globtmpstr,MAX_LINE_WIDTH,"  niter20: number of iterations divided by 20, default=%d\n",niter20);Printf(globtmpstr);
 		Printf("\n");
 		Printf(" Examples:\n");
 		Printf("  ./SVMtrain -n 10 kernel posseq.fa negseq.fa svmtrain\n");
@@ -164,9 +164,9 @@ int mainSVMtrain(int argc, char * argv[]) //mainSVMtrain
 		if(sgi->getLength()>0)
 		{
 			seqname[nseqs] = new char[100]; 
-			sprintf(seqname[nseqs],"%s", sgi->getName()); 
+			snprintf(seqname[nseqs],100,"%s", sgi->getName()); 
 			seqs[nseqs] = new char[sgi->getLength()+1];
-			sprintf(seqs[nseqs],"%s", sgi->getSeq());
+			snprintf(seqs[nseqs],MAX_LINE_WIDTH,"%s", sgi->getSeq());
 			nseqs++;
 		}
 	}
@@ -181,9 +181,9 @@ int mainSVMtrain(int argc, char * argv[]) //mainSVMtrain
 		if(sgi->getLength()>0)
 		{
 			seqname[nseqs] = new char[100]; 
-			sprintf(seqname[nseqs],"%s", sgi->getName()); 
+			snprintf(seqname[nseqs],100,"%s", sgi->getName()); 
 			seqs[nseqs] = new char[sgi->getLength()+1];
-			sprintf(seqs[nseqs],"%s", sgi->getSeq());
+			snprintf(seqs[nseqs],MAX_LINE_WIDTH,"%s", sgi->getSeq());
 			nseqs++;
 		}
 	}
@@ -192,7 +192,7 @@ int mainSVMtrain(int argc, char * argv[]) //mainSVMtrain
 	char *sline = new char[maxslen+2]; 
 	int N = nseqs;
 
-    sprintf(globtmpstr,"npos=%d, nneg=%d, N=%d\n",npos, nneg, N);Printf(globtmpstr);
+    snprintf(globtmpstr,MAX_LINE_WIDTH,"npos=%d, nneg=%d, N=%d\n",npos, nneg, N);Printf(globtmpstr);
     
 	double **kernel = new double *[N]; 
 	for(i=0;i<N;i++)
@@ -232,7 +232,7 @@ int mainSVMtrain(int argc, char * argv[]) //mainSVMtrain
 		for(int j=0;j<=i; j++)
 		{
 			int ret = fscanf(fi, "%lf", &(kernel[i][j])); 
-            if ((ret == EOF) || (ret != 1)) {sprintf(globtmpstr,"\nerror reading kernel, line %d\n",i); Printf(globtmpstr); return(1);}
+            if ((ret == EOF) || (ret != 1)) {snprintf(globtmpstr,MAX_LINE_WIDTH,"\nerror reading kernel, line %d\n",i); Printf(globtmpstr); return(1);}
 			kernel[j][i] = kernel[i][j]; 
 		}
 	}
@@ -248,8 +248,8 @@ int mainSVMtrain(int argc, char * argv[]) //mainSVMtrain
     
 	char *alphaFN = new char[strlen(outFN)+30];
 	char *svFN = new char[strlen(outFN)+30];
-	sprintf(alphaFN, "%s_svalpha.out", outFN);
-	sprintf(svFN, "%s_svseq.fa", outFN);
+	snprintf(alphaFN,MAX_LINE_WIDTH, "%s_svalpha.out", outFN);
+	snprintf(svFN,MAX_LINE_WIDTH, "%s_svseq.fa", outFN);
 
 	FILE *fo_alpha = fopen(alphaFN, "w"); 
 	FILE *fo_sv = fopen(svFN, "w");
