@@ -1,4 +1,4 @@
-2ac15e378ec8ece76c2d5033c90d3b6d *DESCRIPTION
+1937f6d73b86a69cb4bf0a94b16089e5 *DESCRIPTION
 34708ea19d0d0ef8d380a1ec3615a32f *NAMESPACE
 dec672100048bea257020d6f2983922c *R/RcppExports.R
 bf357392164683109a1a2ace628f7ad3 *R/genNullSeqs.R
@@ -8,7 +8,7 @@ adb4c92c2b4ea4f3d4c95f4e35c631a4 *R/gkmsvm_kernel.R
 745a8795b503c80da5cd3ed048db43af *R/gkmsvm_train.R
 d2b7c97c925f7659b47d4bbc404bbf1d *R/gkmsvm_trainCV.R
 55296ec4ac6f741c8007b791ff873232 *man/genNullSeqs.Rd
-404e2ce87fe6c6af48de52cca2bc0869 *man/gkmSVM-package.Rd
+870711e145acbb35763068c5ea42cce2 *man/gkmSVM-package.Rd
 d70466de77b8e49ce4d023eaf9d5252f *man/gkmsvm_classify.Rd
 c7181b9947a4429fb123be435cadae88 *man/gkmsvm_delta.Rd
 39e8fc89c8c0f946fb444c9700e6f6a1 *man/gkmsvm_kernel.Rd

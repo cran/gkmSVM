@@ -1,8 +1,8 @@
 Package: gkmSVM
 Type: Package
 Title: Gapped-Kmer Support Vector Machine
-Version: 0.82.0
-Date: 2023-01-05
+Version: 0.83.0
+Date: 2023-08-20
 Author: Mahmoud Ghandi
 Maintainer: Mike Beer <mbeer@jhu.edu>
 Description: Imports the 'gkmSVM' v2.0 functionalities into R <https://www.beerlab.org/gkmsvm/>
@@ -16,8 +16,7 @@ Suggests: rtracklayer, GenomicRanges, BSgenome,
         BSgenome.Hsapiens.UCSC.hg19.masked, BiocGenerics, Biostrings,
         GenomeInfoDb, IRanges, S4Vectors
 LinkingTo: Rcpp
-SystemRequirements: C++11
 NeedsCompilation: yes
 Repository: CRAN
-Packaged: 2023-01-08 17:11:11 UTC; mbeer3
-Date/Publication: 2023-01-09 11:30:05 UTC
+Packaged: 2023-08-20 16:51:57 UTC; mbeer3
+Date/Publication: 2023-08-20 17:12:32 UTC
